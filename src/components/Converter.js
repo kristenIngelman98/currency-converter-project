@@ -66,7 +66,6 @@ const Converter = () => {
         event.preventDefault();
 
         let float_amount = parseFloat(sourceAmt);
-        console.log("float amt ", typeof float_amount);
 
         if (!sourceAmt) {
             alert("Please enter a $ amount.")
@@ -84,7 +83,7 @@ const Converter = () => {
             .then(response => {
                 let currency_rate = response.data.conversion_rates;
                 setDestinationAmt(sourceAmt * currency_rate);
-                console.log(typeof destinationAmt);
+    
                 for (const [key, value] of Object.entries(currency_rate)) {
                     if (key === destinationCurrency) { // using obj key to get currency rate value
                         setDestinationAmt((sourceAmt * value).toFixed(2) + " " + destinationCurrency); //2 decimal places
